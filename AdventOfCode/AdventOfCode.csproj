@@ -57,6 +57,13 @@
     <None Include="input\day3.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="input\day5.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="input\day6.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="input\day7.input" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
