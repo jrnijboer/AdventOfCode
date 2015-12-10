@@ -1,4 +1,5 @@
-﻿lf AND lq -> ls
+﻿NOT 10 -> xx
+lf AND lq -> ls
 iu RSHIFT 1 -> jn
 bo OR bu -> bv
 gj RSHIFT 1 -> hc

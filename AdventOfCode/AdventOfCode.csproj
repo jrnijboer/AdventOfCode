@@ -43,6 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Day01.cs" />
+    <Compile Include="Day02.cs" />
+    <Compile Include="Day03.cs" />
+    <Compile Include="Day04.cs" />
+    <Compile Include="Day05.cs" />
+    <Compile Include="Day06.cs" />
+    <Compile Include="Day07.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,7 +72,9 @@
     <None Include="input\day6.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="input\day7.input" />
+    <None Include="input\day7.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
