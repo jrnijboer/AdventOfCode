@@ -58,6 +58,7 @@
     <Compile Include="Day09.cs" />
     <Compile Include="Day11.cs" />
     <Compile Include="Day12.cs" />
+    <Compile Include="Day14.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,7 +73,7 @@
     <None Include="input\day13.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="input\day13test.input">
+    <None Include="input\day14.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="input\day2.input">
