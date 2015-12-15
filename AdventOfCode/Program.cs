@@ -14,7 +14,7 @@ namespace AdventOfCode
     {
         static void Main(string[] args)
         {
-            Day14b();
+            Day15b();
             Console.ReadKey();
         }        
     }
