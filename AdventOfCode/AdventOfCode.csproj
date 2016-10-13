@@ -62,6 +62,13 @@
     <Compile Include="Day14.cs" />
     <Compile Include="Day16.cs" />
     <Compile Include="Day17.cs" />
+    <Compile Include="Day18.cs" />
+    <Compile Include="Day19.cs" />
+    <Compile Include="Day20.cs" />
+    <Compile Include="Day21.cs" />
+    <Compile Include="Day22.cs" />
+    <Compile Include="Day23.cs" />
+    <Compile Include="Day25.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -85,7 +92,19 @@
     <None Include="input\day16.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="input\day18.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="input\day19.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="input\day19test.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="input\day2.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="input\day23.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="input\day3.input">
