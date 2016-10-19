@@ -14,7 +14,6 @@ namespace AdventOfCode
         {
             var input = File.ReadAllLines("input/day19.input");
             var replacements = new List<Tuple<string, string>>();
-            var moleculeVariants = new List<string>();
 
             var startElement = input[input.Length - 1];
 
@@ -22,53 +21,43 @@ namespace AdventOfCode
             for (int i = 0; i < input.Length - 2; i++)
             {
                 var match = Regex.Match(input[i], pattern);
-                replacements.Add(new Tuple<string, string>(match.Groups[1].Value, match.Groups[2].Value));
+                if (match.Success)
+                    replacements.Add(new Tuple<string, string>(match.Groups[1].Value, match.Groups[2].Value));
             }
-
-            var ArReplacements = new Dictionary<string, string>(); 
-            foreach (var replacement in replacements.ToArray())
-            {
-                if (replacement.Item2.EndsWith("Ar"))
-                {
-                    ArReplacements[replacement.Item2] = replacement.Item1;
-                    replacements.Remove(replacement);
-                }
-            }
-
-            int pos = 1;
-
-            while (pos > 0)
-            {
-                pos = startElement.IndexOf("Ar");
-                startElement = GetArReplacement(startElement.Substring(0, pos)) + startElement.Substring(pos + 2);
-            }
-
-            Console.WriteLine("cleaned startelemen: {0}", startElement);
-
-            //int count = startElement.Split(new[] { "SiRnFYFAr" }, StringSplitOptions.None).Count() - 1;
-            //startElement = startElement.Replace("SiRnFYFAr", "Ca");
+                        
+            List<string> elementList = new List<string>();
             
-        }
-
-        private static string GetArReplacement(string molecule)
-        {
-            while (molecule.IndexOf("Ar") > 0)
+            //elements in reversed list
+            startElement = new string(startElement.Reverse().ToArray());
+            int pos = 0;
+            while (pos < startElement.Length)
             {
-
-
-                break;
+                if (startElement[pos] >= 'a' && startElement[pos] <= 'z')
+                {
+                    elementList.Add(new string(startElement.Substring(pos, 2).Reverse().ToArray()));
+                    pos++;
+                }
+                else
+                {
+                    elementList.Add(startElement[pos].ToString());
+                }
+                pos++;
             }
+          
+            int yElements = elementList.Where(e => e == "Y").Count();
+            int RnArElements = elementList.Where(e => e == "Ar" || e == "Rn").Count();
 
-            return molecule;
+            int solution = elementList.Count - RnArElements - (2 * yElements) - 1;
+            Console.WriteLine("Found answer: {0}", solution);
         }
-
+        
         static void Day19a()
         {
             var input = File.ReadAllLines("input/day19.input");
             var replacements = new List<Tuple<string, string>>();
             var moleculeVariants = new List<string>();
             var startElement = input[input.Length - 1];
-                        
+
             string pattern = @"^(\w+) => (\w+)$";
             for (int i = 0; i < input.Length - 2; i++)
             {
@@ -81,7 +70,7 @@ namespace AdventOfCode
                 //todo: correct pattern maken
                 var matches = Regex.Matches(startElement, replacement.Item1);
 
-                foreach (Match match in matches) 
+                foreach (Match match in matches)
                 {
                     moleculeVariants.Add(startElement.Substring(0, match.Index) + replacement.Item2 + startElement.Substring(match.Index + replacement.Item1.Length));
                 }
