@@ -5,26 +5,19 @@ import (
 	"strconv"
 	"bufio"
 	"os"
-	"log"
 	"strings"
 )
 
 func main() {
 	checksumA := 0
 	checksumB := 0
-	file, err := os.Open("day2.input")
-	if err != nil {
-	        log.Fatal(err)
-	}
+	file, _ := os.Open("day2.input")
 	defer file.Close()
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		numbers := getNumbersFromLine(scanner.Text())
 		checksumA += calculateChecksumA(numbers[:])
 		checksumB += calculateChecksumB(numbers[:])
-	}
-        if err := scanner.Err(); err != nil {
-		log.Fatal(err)
 	}
 	fmt.Printf("Checksum for part A is %v\n", checksumA)
 	fmt.Printf("Checksum for part B is %v\n", checksumB)
@@ -34,10 +27,8 @@ func getNumbersFromLine(input string) []int {
 	arr := strings.Split(input, "\t")
 	var numbers = []int{}
 	for _, i := range arr {
-		n, err := strconv.Atoi(i)
-		if err == nil {
-			numbers = append(numbers,n)
-		}
+		n, _ := strconv.Atoi(i)
+		numbers = append(numbers,n)
 	}
 	return numbers
 }
