@@ -3,13 +3,8 @@ puzzleInput = 312051
 #up, left, down, right
 directions = [(0, 1), (-1, 0), (0, -1),(1, 0)]
 #bootstrap the spiral
-grid = {}
-position = (0,0)
-grid[position] = 1
-position = (1,0)
-grid[position] = 1
+grid = { (0,0): 1, (1,0): 1, (1,1): 2 }
 position = (1,1)
-grid[position] = 2
 direction = 1
 
 def move(pos):
