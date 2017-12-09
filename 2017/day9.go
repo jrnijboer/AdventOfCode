@@ -26,7 +26,7 @@ func solve(input string){
 		if garbage && string(input[pos]) != "!" { garbageSum++ }
 
 		switch(string(input[pos])) {
-			case "!" : pos++
+			case "!" : if garbage { pos++ }
 			case "<" : garbage = true
 			case ">" :
 				garbage = false
