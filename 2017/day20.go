@@ -1,4 +1,5 @@
 package main
+
 import (
 	"fmt"
 	"bufio"
@@ -8,7 +9,6 @@ import (
 )
 
 func main() {
-	//file, _ := os.Open("day20.input.sample")
 	file, _ := os.Open("day20.input")
         defer file.Close()
         scanner := bufio.NewScanner(file)
@@ -19,7 +19,6 @@ func main() {
 	p := 0
 	for scanner.Scan() {
 		line  := scanner.Text()
-		//fmt.Printf("Line: [%v]\n", line)
 		var re = regexp.MustCompile(`^\w=<(-?\d+),(-?\d+),(-?\d+)>, \w=<(-?\d+),(-?\d+),(-?\d+)>, \w=<(-?\d+),(-?\d+),(-?\d+)>`)
 		groups := re.FindStringSubmatch(line)
 		if len(groups) < 10 {
@@ -27,17 +26,9 @@ func main() {
 			panic("regex broken")
 		}
 
-		x,_ := strconv.Atoi(groups[1])
-		y,_ := strconv.Atoi(groups[2])
-		z,_ := strconv.Atoi(groups[3])
-
-		vx,_ := strconv.Atoi(groups[4])
-		vy,_ := strconv.Atoi(groups[5])
-		vz,_ := strconv.Atoi(groups[6])
-
-		ax,_ := strconv.Atoi(groups[7])
-		ay,_ := strconv.Atoi(groups[8])
-		az,_ := strconv.Atoi(groups[9])
+		x,y,z := getValues(groups[1], groups[2], groups[3])
+		vx,vy,vz := getValues(groups[4], groups[5], groups[6])
+		ax,ay,az := getValues(groups[7], groups[8], groups[9])
 
 		positions[p] = []int {x,y,z}
 		velocities[p] = []int {vx,vy,vz}
@@ -49,18 +40,49 @@ func main() {
 	solveB(particles, positions, velocities, accelerations)
 }
 
-func solveB(particles []int, positions map[int] []int, velocites map[int] []int, accelerations map[int] []int) {
-	fmt.Println("B")
+func getValues(sX string, sY string, sZ string) (int, int, int) {
+	x, _ := strconv.Atoi(sX)
+	y, _ := strconv.Atoi(sY)
+	z, _ := strconv.Atoi(sZ)
+	return x,y,z
 }
 
-func solveA(positions map[int] []int, velocites map[int] []int, accelerations map[int] []int) {
+func solveB(particles []int, positions map[int] []int, velocities map[int] []int, accelerations map[int] []int) {
+	iterations := 0
+	for iterations < 100 {
+		particlePositions := make(map[string][]int)
+		for _, p := range particles {
+			for i := 0; i < 3; i++ {
+				velocities[p][i] += accelerations[p][i]
+				positions[p][i] += velocities[p][i]
+			}
+			s := strconv.Itoa(positions[p][0]) + "," + strconv.Itoa(positions[p][1]) + "," + strconv.Itoa(positions[p][2])
+			particlePositions[s] = append(particlePositions[s], p)
+		}
+		remainingParticles := []int{}
+
+		for _, v := range particlePositions {
+			if len(v) == 1 {
+				remainingParticles = append(remainingParticles, v[0])
+			}
+		}
+		if len(particles) != len(remainingParticles) {
+			iterations = 0
+		} else {
+			iterations++
+		}
+		particles = remainingParticles
+	}
+	fmt.Printf("answer b: %v\n", len(particles))
+}
+
+func solveA(positions map[int] []int, velocities map[int] []int, accelerations map[int] []int) {
 	min := 1000000
 	minP := -1
 
 	for p, v := range accelerations {
 		_, m := MinMax(v)
 		if m < min {
-			//fmt.Printf("lower acceleration %v found, was: %v, now: %v\n", m, accelerations[minP], accelerations[p])
 			min = m
 			minP = p
 		}
@@ -69,12 +91,14 @@ func solveA(positions map[int] []int, velocites map[int] []int, accelerations ma
 }
 
 func MinMax(array []int) (int, int) {
-	if array[0] < 0 {
-		array[0] = -array[0]
+	arr := make([]int, len(array))
+	copy(arr, array)
+	if arr[0] < 0 {
+		arr[0] = -arr[0]
 	}
-	var max int = array[0]
-	var min int = array[0]
-	for _, value := range array {
+	var max int = arr[0]
+	var min int = arr[0]
+	for _, value := range arr {
 		if value < 0  {
 			value = -value
 		}
@@ -87,36 +111,3 @@ func MinMax(array []int) (int, int) {
 	}
 	return min, max
 }
-/*
-// A data structure to hold a key/value pair.
-type Pair struct {
-	Key string
-	Value int
-}
-
-// A slice of Pairs that implements sort.Interface to sort by Value.
-type PairList []Pair
-
-func (p PairList) Swap(i, j int) {
-	p[i], p[j] = p[j], p[i]
-}
-
-func (p PairList) Len() int {
-	return len(p)
-}
-
-func (p PairList) Less(i, j int) bool {
-	return p[i].Value < p[j].Value
-}
-
-// A function to turn a map into a PairList, then sort and return it. 
-func sortMapByValue(m map[string]int) PairList {
-	p := make(PairList, len(m))
-	i := 0
-	for k, v := range m {
-		p[i] = Pair{k, v}
-	}
-	sort.Sort(p)
-	return p
-}
-*/
