@@ -44,7 +44,7 @@ func enhance(grid []string, enhancements map[string]string) []string {
 	for i := range squares {
 		square := squares[i]
 		var s string
-		for k:= 0; k < 9; k++ {
+		for k:= 0;; k++ {
 			s = squareToString(square)
 			if enhancements[s] != "" {
 				square = strings.Split(enhancements[s],"/")
@@ -103,12 +103,6 @@ func buildGridFromSquares(squares [][]string) []string {
 		}
 	}
 	return grid
-}
-
-func buildSquareFromString(s string) []string {
-	rows := strings.Split(s, "/")
-	return rows
-
 }
 
 func squareToString(square []string) string {
