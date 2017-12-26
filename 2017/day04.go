@@ -11,7 +11,7 @@ import (
 func main() {
 	validLinesA := 0
 	validLinesB := 0
-	file, _ := os.Open("day4.input")
+	file, _ := os.Open("day04.input")
 	defer file.Close()
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {

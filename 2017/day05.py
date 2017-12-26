@@ -1,5 +1,5 @@
-with open("day5.input") as inputfile: instructionsA = [int(line[:-1]) for line in inputfile]
-with open("day5.input") as inputfile: instructionsB = [int(line[:-1]) for line in inputfile]
+with open("day05.input") as inputfile: instructionsA = [int(line[:-1]) for line in inputfile]
+with open("day05.input") as inputfile: instructionsB = [int(line[:-1]) for line in inputfile]
 def solve(instructions, B):
 	steps = pos = 0
 	while pos < len(instructions) and pos >= 0:

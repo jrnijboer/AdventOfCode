@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	file, _ := os.Open("day9.input")
+	file, _ := os.Open("day09.input")
         defer file.Close()
         scanner := bufio.NewScanner(file)
 	for scanner.Scan() {

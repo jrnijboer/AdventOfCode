@@ -11,7 +11,7 @@ import (
 func main() {
 	checksumA := 0
 	checksumB := 0
-	file, _ := os.Open("day2.input")
+	file, _ := os.Open("day02.input")
 	defer file.Close()
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {

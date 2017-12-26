@@ -13,7 +13,7 @@ func main() {
 	var programsDict = make(map[string]int)
 	var childsDict = make(map[string]string)
 	var parentsDict = make(map[string][]string)
-	file, _ := os.Open("day7.input")
+	file, _ := os.Open("day07.input")
         defer file.Close()
         scanner := bufio.NewScanner(file)
 	re := regexp.MustCompile(`(?P<p>\S+) \((?P<w>\d+)\)`)
