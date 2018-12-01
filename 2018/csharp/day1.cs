@@ -13,7 +13,7 @@ namespace aoc2018
             Console.WriteLine("Day 1, answer a: {0}", values.Sum());
 
             var f = 0;
-            var freqs = new Dictionary<int, int>();
+            var freqs = new HashSet<int>();
 
             while (true)
             {
@@ -21,9 +21,9 @@ namespace aoc2018
                 {
                     f += value;
 
-                    if (!freqs.ContainsKey(f))
+                    if (!freqs.Contains(f))
                     {
-                        freqs[f] = 0;
+                        freqs.Add(f);
                     }
                     else
                     {
