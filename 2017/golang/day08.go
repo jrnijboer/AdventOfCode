@@ -10,7 +10,7 @@ import (
 func main() {
 	var registers = make(map[string]int)
 
-	file, _ := os.Open("day8.input")
+	file, _ := os.Open("day08.input")
         defer file.Close()
         scanner := bufio.NewScanner(file)
 	maxEver := 0

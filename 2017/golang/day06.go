@@ -9,7 +9,7 @@ import (
 
 func main() {
         var memory = []int{}
-        file, _ := os.Open("day6.input")
+        file, _ := os.Open("day06.input")
         defer file.Close()
         scanner := bufio.NewScanner(file)
         for scanner.Scan() {

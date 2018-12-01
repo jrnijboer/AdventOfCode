@@ -10,7 +10,7 @@ import (
 func main() {
 	var instructionsA = []int{}
 	var instructionsB = []int{}
-	file, _ := os.Open("day5.input")
+	file, _ := os.Open("day05.input")
 	defer file.Close()
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
