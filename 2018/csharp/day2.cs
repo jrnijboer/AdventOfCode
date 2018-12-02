@@ -43,6 +43,7 @@ namespace aoc2018
 
             Console.WriteLine("day2, answer a: {0}", twos * threes);
         }
+
         public static void solveB(List<string> lines)
         {
             lines.Sort();
@@ -69,3 +70,4 @@ namespace aoc2018
         }
     }
 }
+
