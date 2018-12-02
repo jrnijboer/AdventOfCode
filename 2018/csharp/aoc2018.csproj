@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,9 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="input\day1.input">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+   
   </ItemGroup>
 
 </Project>
