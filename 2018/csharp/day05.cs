@@ -7,13 +7,13 @@ namespace aoc2018
     {
         public static void Solve()
         {
-            var input = File.ReadAllText("day5.input");
+            var input = File.ReadAllText(Path.Combine("..", "input", "day5.input"));
             Console.WriteLine("day5, answer a: {0}", React(input));
 
             int min = int.MaxValue;
             for (char replaceChar = 'a'; replaceChar <= 'z'; replaceChar++)
             {
-                input = File.ReadAllText("day5.input");
+                input = File.ReadAllText(Path.Combine("..", "input", "day5.input"));
                 input = input.Replace(replaceChar.ToString(), "").Replace(replaceChar.ToString().ToUpper(), "");
                 min = Math.Min(min, React(input));
             }
