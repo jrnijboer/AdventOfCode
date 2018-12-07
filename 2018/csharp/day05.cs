@@ -17,7 +17,7 @@ namespace aoc2018
                 input = input.Replace(replaceChar.ToString(), "").Replace(replaceChar.ToString().ToUpper(), "");
                 min = Math.Min(min, React(input));
             }
-            Console.WriteLine("day5, answer a: {0}", min);
+            Console.WriteLine("day5, answer b: {0}", min);
         }
 
         static int React(string input)
