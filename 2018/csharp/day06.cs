@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Linq;
-using System.IO;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 
 namespace aoc2018
 {
