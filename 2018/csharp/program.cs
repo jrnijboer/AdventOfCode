@@ -11,7 +11,8 @@ namespace aoc2018
             //Day3.Solve();
             //Day4.Solve();
             //Day5.Solve();
-            Day6.Solve();
+            //Day6.Solve();
+            Day7.Solve();
             Console.ReadKey();           
         }
     }
