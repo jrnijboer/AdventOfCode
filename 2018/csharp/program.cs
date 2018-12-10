@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace aoc2018
 {
@@ -6,6 +7,8 @@ namespace aoc2018
     {
         static void Main(string[] args)
         {
+            var sw = new Stopwatch();
+            sw.Start();
             //Day1.Solve();
             //Day2.Solve();
             //Day3.Solve();
@@ -14,7 +17,10 @@ namespace aoc2018
             //Day6.Solve();
             //Day7.Solve();
             //Day8.Solve();
-            Day9.Solve();
+            //Day9.Solve();
+            Day10.Solve();
+            sw.Stop();
+            Console.WriteLine("day solved in {0}ms", sw.ElapsedMilliseconds);
             Console.ReadKey();
         }
     }
