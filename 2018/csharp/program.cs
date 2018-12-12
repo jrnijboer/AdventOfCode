@@ -19,7 +19,8 @@ namespace aoc2018
             //Day8.Solve();
             //Day9.Solve();
             //Day10.Solve();
-            Day11.Solve();            
+            //Day11.Solve();
+            Day12.Solve();
             sw.Stop();
             Console.WriteLine("day solved in {0}ms", sw.ElapsedMilliseconds);
             Console.ReadKey();
