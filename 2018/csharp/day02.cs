@@ -23,16 +23,10 @@ namespace aoc2018
             {
                 var letters = new Dictionary<char, int>();
                 foreach (var c in line)
-                {
                     if (letters.ContainsKey(c))
-                    {
                         letters[c]++;
-                    }
                     else
-                    {
                         letters[c] = 1;
-                    }
-                }
 
                 if (letters.Values.Contains(2))
                     twos++;

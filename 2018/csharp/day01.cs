@@ -11,27 +11,21 @@ namespace aoc2018
         {
             var values = File.ReadAllLines(Path.Combine("..", "input", "day1.input")).Select(line => int.Parse(line));
             Console.WriteLine("Day 1, answer a: {0}", values.Sum());
-
             var f = 0;
             var freqs = new HashSet<int>();
 
             while (true)
-            {
                 foreach (var value in values)
                 {
                     f += value;
-
                     if (!freqs.Contains(f))
-                    {
                         freqs.Add(f);
-                    }
                     else
                     {
                         Console.WriteLine("Day 1, answer b: {0}", f);
                         return;
                     }
                 }
-            }
         }
     }
 }

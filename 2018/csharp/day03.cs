@@ -14,7 +14,7 @@ namespace aoc2018
             var lines = File.ReadLines(Path.Combine("..", "input", "day3.input")).ToList();
             var pattern = @"^#(\d+) @ (\d+),(\d+): (\d+)x(\d+)$";
             var r = new Regex(pattern);
-            var claims = new Dictionary<Point, List<int>>();            
+            var claims = new Dictionary<Point, List<int>>();
             foreach (var line in lines)
             {
                 var m = r.Match(line);
@@ -22,7 +22,7 @@ namespace aoc2018
                 int left = int.Parse(m.Groups[2].Value);
                 int top = int.Parse(m.Groups[3].Value);
                 int width = int.Parse(m.Groups[4].Value);
-                int height = int.Parse(m.Groups[5].Value);                
+                int height = int.Parse(m.Groups[5].Value);
                 for (int i = top; i < height + top; i++)
                 {
                     for (int j = left; j < width + left; j++)
@@ -39,7 +39,6 @@ namespace aoc2018
             int overlapSize = 0;
             HashSet<int> overlaps = new HashSet<int>();
             foreach (var key in claims.Keys)
-            {                
                 if (claims[key].Count > 1)
                 {
                     overlapSize++;
@@ -48,7 +47,6 @@ namespace aoc2018
                         overlaps.Add(i);
                     }
                 }
-            }            
 
             Console.WriteLine("day3, answer a: {0}", overlapSize);
             Console.WriteLine("day3, answer b: {0}", Enumerable.Range(1, lines.Count).Except(overlaps).First());
