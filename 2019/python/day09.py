@@ -1,4 +1,3 @@
-from collections import defaultdict
 def solve(invalue, I, ip):
     offset, oc = 0, I[ip] % 100
     while oc != 99:
