@@ -1,4 +1,3 @@
-from collections import defaultdict
 def run(inbuffer, I, ip, offset):
     oc, outbuff = I[ip] % 100, []
     while oc != 99:
@@ -23,10 +22,10 @@ def run(inbuffer, I, ip, offset):
     return outbuff, -1, 0
 
 blocks, I = 0, list(map(int,open("../input/day13.input").readline().split(",")))
-D1 = D2 = {i:I[i] for i in range(len(I))}
-D2[0], inbuff, ip = 2, [], 0
+D = {i:I[i] for i in range(len(I))}
+D[0], inbuff, ip = 2, [], 0
 while True :
-    game, ip, _ = run(inbuff, D2, ip, 0)
+    game, ip, _ = run(inbuff, D, ip, 0)
     if ip < 0: break
     for i in range(0, len(game), 3):
         if game[i+2] == 4: ball = game[i]
