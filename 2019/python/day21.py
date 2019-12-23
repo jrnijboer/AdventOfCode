@@ -1,6 +1,5 @@
 from collections import defaultdict
 def run(inbuffer, I, ip, offset):
-    I = defaultdict(int, I)
     oc, outbuff = I[ip] % 100, []
     while oc != 99:
         m1, m2, m3 = I[ip] % 1000 // 100, I[ip] % 10000 // 1000, I[ip] // 10000
@@ -24,7 +23,7 @@ def run(inbuffer, I, ip, offset):
     return outbuff, -1, 0
 
 I = list(map(int,open("../input/day21.input").readline().split(",")))
-D, G = {i:I[i] for i in range(len(I))}, defaultdict(int)
+D = defaultdict(int, {i:I[i] for i in range(len(I))})
 output, _, _ = run([], D, 0, 0)
 
 def getCode(input):
@@ -37,5 +36,6 @@ output, _, _ = run(getCode(input), D, 0, 0)
 print("answer a: ", output[len(output) - 1])
 
 input = ["NOT A J", "NOT B T", "OR T J", "NOT C T", "OR T J", "AND D J", "NOT E T", "NOT T T", "OR H T", "AND T J", "RUN"]
+D = defaultdict(int, {i:I[i] for i in range(len(I))})
 output, _, _ = run(getCode(input), D, 0, 0)
 print("answer b: ", output[len(output) - 1])
