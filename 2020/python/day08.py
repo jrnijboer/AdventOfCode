@@ -15,6 +15,6 @@ def patch(input, i):
   if operator == "jmp": patched[i] = "nop " + argument
   elif operator == "nop": patched[i] = "jmp " + argument
   return patched
-  
+
 print("Answer A:", Solve(input)[0])
-print("Answer B:", [b for b, ip in [Solve(x) for x in [p for p in  [patch(input, i) for i in range(len(input))]]] if ip >= len(input)][0])
+print("Answer B:", [b for b, ip in [Solve(x) for x in [p for p in [patch(input, i) for i in range(len(input)) if not input[i].startswith("acc")]]] if ip >= len(input)][0])
