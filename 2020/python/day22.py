@@ -9,11 +9,11 @@ def appointCardsToWinner(A, B, a, b, winner):
   return A, B
 
 def play(A, B, recurse):
-  statesA, statesB = [], []
+  statesA, statesB = set(), set()
   while A and B:
-    if A in statesA and B in statesB: return A + B, deque()
-    statesA.append(A.copy())
-    statesB.append(B.copy())
+    if tuple(A) in statesA and tuple(B) in statesB: return A + B, deque()
+    statesA.add(tuple(A))
+    statesB.add(tuple(B))
     a, b = A.popleft(), B.popleft()
     if recurse and a <= len(A) and b <= len(B):
       Asub, Bsub = play(deque(list(A)[:a]), deque(list(B)[:b]), recurse)
