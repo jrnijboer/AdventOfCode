@@ -5,29 +5,24 @@ def playGame(partB=False):
   C[input[-1]] = input[0]
 
   for _ in range(100 if not partB else 10000000):
-    #rule 1: pick 3 cups
-    picks, p = [], current
+    picks, p = [], current #start rule 1: pick 3 cups
     for i in range(3):
       p = C[p]
       picks.append(p)
     C[current] = C[p] #fix the link after yanking out the 3 cups
 
-    #rule 2: select destination
-    dest = current - 1
-    if dest == 0: dest = len(input)
+    dest = current - 1 if current > 1 else len(input) #start rule 2: select destination
     while dest in picks:
       dest -= 1
       if dest <= 0: dest = len(input)
 
-    #rule 3: place cups
-    tmp = C[dest]
+    tmp = C[dest] #start rule 3: place cups
     for pick in picks:
       C[dest] = pick
       dest = pick
     C[dest] = tmp
 
-    #rule 4 begin: select next current cup
-    current = C[current]
+    current = C[current] #start rule 4 begin: select next current cup
   return C
 
 C = playGame()
@@ -38,5 +33,4 @@ for _ in range(8):
 print("Answer A:", partA)
 
 C = playGame(True)
-n1 = C[1]
 print("Answer B:", C[1] * C[C[1]])
