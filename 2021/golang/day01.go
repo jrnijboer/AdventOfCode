@@ -27,7 +27,7 @@ func Day01() {
 
 	partB := 0
 	for i := 3; i < len(digits); i++ {
-		if digits[i]+digits[i-1]+digits[i-2] > digits[i-1]+digits[i-2]+digits[i-3] {
+		if digits[i] > digits[i-3] {
 			partB++
 		}
 	}
