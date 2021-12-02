@@ -12,7 +12,7 @@ func Day02() {
 	file, _ := os.Open("../input/day02.input")
 	defer file.Close()
 	scanner := bufio.NewScanner(file)
-	x, y1, y2, aim := 0, 0, 0, 0
+	x, y1, y2 := 0, 0, 0
 
 	for scanner.Scan() {
 		fields := strings.Fields(scanner.Text())
@@ -20,16 +20,14 @@ func Day02() {
 		switch fields[0] {
 		case "forward":
 			x += value
-			y2 += value * aim
+			y2 += value * y1
 		case "up":
 			y1 -= value
-			aim -= value
 		case "down":
 			y1 += value
-			aim += value
 		}
 	}
 
 	fmt.Println("Answer A:", x*y1)
-	fmt.Println("Answer A:", x*y2)
+	fmt.Println("Answer B:", x*y2)
 }
