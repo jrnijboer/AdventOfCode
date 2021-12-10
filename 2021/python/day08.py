@@ -35,10 +35,10 @@ for line in lines:
             else:
                 segments[2] = s
 
-    wires = {v:k for k,v in segments.items()}
+    wires = {v: k for k, v in segments.items()}
     factor = 1000
     for output in [''.join(sorted(o)) for o in outputs.split()]:
-        if len(output) in [2,3,4,7]:
+        if len(output) in [2, 3, 4, 7]:
             A += 1
         B += factor * wires[output]
         factor //= 10

@@ -1,13 +1,13 @@
-def get_most_common_bit(bitlines:list, pos:int):
+def get_most_common_bit(bitlines: list, pos: int):
     ones = len([line for line in bitlines if line[pos] == '1'])
     return 1 if ones >= len(bitlines) - ones else 0
 
-def to_int(binary_string:str):
+def to_int(binary_string: str):
     return int("".join([str(i) for i in binary_string]), 2)
 
 lines = [i.strip() for i in open("../input/day03.input", encoding="utf-8").readlines()]
 gamma = [get_most_common_bit(lines, i) for i in range(len(lines[0]))]
-print("Answer A:", (2**(len(lines[0])) -1 - to_int(gamma)) * to_int(gamma))
+print("Answer A:", (2**(len(lines[0])) - 1 - to_int(gamma)) * to_int(gamma))
 
 oxygen, co2 = lines.copy(), lines.copy()
 for i in range(len(lines[0])):
