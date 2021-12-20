@@ -50,17 +50,6 @@ def addSnail(s1: list, s2: list) -> list:
         s2[i] = (s2[i][0] + 1, s2[i][1])
     return s1 + s2
 
-# def calcMagnitude(snail: list) -> int:
-#     deepest = max([pair[0] for pair in snail])
-#     while deepest != 0:
-#         for idx, pair in enumerate(snail):
-#             depth = pair[0]
-#             if depth == deepest:
-#                 del snail[idx]
-#                 snail[idx] = (depth - 1, 3 * pair[1] + 2 * snail[idx][1])
-#         deepest = max([pair[0] for pair in snail])
-#     return 3 * snail[0][1] + 2 * snail[1][1]
-
 def calcMagnitude(snail: list) -> int:
     while len(snail) > 1:
         deepest = max([pair[0] for pair in snail])
