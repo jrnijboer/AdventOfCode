@@ -1,4 +1,4 @@
-lines = [line.strip().replace("-", ",") for line in open("../input/day04.input").readlines()]
+lines = [line.strip().replace("-", ",") for line in open("../input/day04.input", encoding="utf-8").readlines()]
 A, B = 0, 0
 for line in lines:
     a1, a2, b1, b2 = [int(c) for c in line.split(",")]
