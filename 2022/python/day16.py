@@ -1,5 +1,4 @@
 from itertools import combinations
-from collections import deque, defaultdict
 lines = [line.strip() for line in open("../input/day16.input", encoding="utf-8").readlines()]
 distances, tunnels, valverates = {}, {}, {"AA": 0}
 
@@ -17,9 +16,9 @@ for line in lines:
 routes = combinations(valverates.keys(), 2)
 for start, end in routes:
     best = 999
-    Q = deque([(start, 0, set())])
+    Q = [(start, 0, set())]
     while Q:
-        location, distance, visited = Q.popleft()
+        location, distance, visited = Q.pop(0)
         if location == end:
             if distance < best:
                 distances[(start, end)] = distance
@@ -33,10 +32,10 @@ for start, end in routes:
 destinations = set(valverates.keys()) - {"AA"}
 
 maxpressure = 0
-Q = deque([("AA", 0, 0, destinations)])
+Q = [("AA", 0, 0, destinations)]
 timelimit = 30
 while Q:
-    location, time, pressure, destinations = Q.popleft()
+    location, time, pressure, destinations = Q.pop()
     pressure = pressure + (timelimit - time - 1) * valverates[location]
     maxpressure = max(maxpressure, pressure)
     for dest in destinations:
@@ -48,13 +47,13 @@ while Q:
 print("Answer A:", maxpressure)
 
 destinations = frozenset(valverates.keys()) - {"AA"}
-Q = deque([("AA", 0, 0, frozenset())])
+Q = [("AA", 0, 0, frozenset())]
 timelimit = 26
-B = defaultdict(int)
+B = {}
 while Q:
-    location, time, pressure, seen = Q.popleft()
+    location, time, pressure, seen = Q.pop()
     pressure = pressure + (timelimit - time - 1) * valverates[location]
-    B[seen] = max(B[seen], pressure)
+    B[seen] = max(B[seen], pressure) if seen in B else pressure
     for dest in destinations - seen:
         time_needed = 1 + distances[(location, dest)]
         if location == "AA":

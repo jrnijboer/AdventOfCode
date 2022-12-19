@@ -46,4 +46,5 @@ while turn < trillion:
     turn += 1
     if turn == 2022:
         print("Answer A:", topY)
+    G = {k:v for k, v in G.items() if k[0] >= topY - 50}
 print("Answer B:", topY + cycleheight)

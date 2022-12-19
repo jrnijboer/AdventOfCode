@@ -1,4 +1,4 @@
-lines = [line.strip() for line in open("/root/git/AdventOfCode/2022/input/day18.input", encoding="utf-8").readlines()]
+lines = [line.strip() for line in open("../input/day18.input", encoding="utf-8").readlines()]
 A, B, blocks, visited = 0, set(), set(), set()
 d = [(1,0,0), (-1,0,0), (0,1,0), (0,-1,0), (0,0,1), (0,0,-1)]
 minx, miny, minz, maxx, maxy, maxz = 9999, 9999, 9999, 0, 0, 0
