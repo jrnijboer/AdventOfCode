@@ -61,11 +61,11 @@ def solve(timelimit, prints):
 
             # queue new robots or requeue current
             if builtrobot:
-                if prodore < prodlimits[0]:
+                if prodore < prodlimits[0] and ore + prodore * (timelimit - time -1) < (timelimit - time -1) * prodlimits[0]:
                     Q.append((0, time + 1, ore, clay, obsidian, geode, prodore, prodclay, prodobsidian, prodgeode))
-                if prodclay < prodlimits[1]:
+                if prodclay < prodlimits[1] and clay + prodclay * (timelimit - time -1) < (timelimit - time -1) * prodlimits[1]:
                     Q.append((1, time + 1, ore, clay, obsidian, geode, prodore, prodclay, prodobsidian, prodgeode))
-                if prodclay > 0 and prodobsidian < prodlimits[2]:
+                if prodclay > 0 and prodobsidian < prodlimits[2] and obsidian + prodobsidian * (timelimit - time -1) < (timelimit - time -1) * prodlimits[2]:
                     Q.append((2, time + 1, ore, clay, obsidian, geode, prodore, prodclay, prodobsidian, prodgeode))
                 if prodobsidian > 0:
                     Q.append((3, time + 1, ore, clay, obsidian, geode, prodore, prodclay, prodobsidian, prodgeode))
