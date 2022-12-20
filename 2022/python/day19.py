@@ -1,6 +1,4 @@
-import sys
-from collections import deque
-lines = [line.strip() for line in open("/root/git/AdventOfCode/2022/input/day19.input", encoding="utf-8").readlines()]
+lines = [line.strip() for line in open("../input/day19.input", encoding="utf-8").readlines()]
 resources = ["ore", "clay", "obsidian", "geode"]
 blueprints = []
 limits = {0:0, 1:0, 2:0, 3:1000}
@@ -27,9 +25,9 @@ def solve(timelimit, prints):
             prodlimits[1] = max(prodlimits[1], blueprint[i][1])
             prodlimits[2] = max(prodlimits[2], blueprint[i][2])
 
-        Q = deque([(0, 1, 0, 0, 0, 0, 1, 0, 0, 0), (1, 1, 0, 0, 0, 0, 1, 0, 0, 0)])
+        Q = [(0, 1, 0, 0, 0, 0, 1, 0, 0, 0), (1, 1, 0, 0, 0, 0, 1, 0, 0, 0)]
         while Q:
-            item = Q.popleft()
+            item = Q.pop()
             if item in seen:
                 continue
             seen.add(item)
