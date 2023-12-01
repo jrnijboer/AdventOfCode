@@ -1,21 +1,12 @@
 lines = [line.strip() for line in open("../input/day01.txt", encoding="utf-8").readlines()]
 sumA, sumB = 0, 0
-NumberDict = {"one": "1", "two": "2", "three": "3", "four": "4", "five": "5", "six": "6", "seven": "7", "eight": "8", "nine": "9"}
-
-def replaceStringWithNumber(line):
-    i, replacedLine = 0, ""
-    while i < len(line):
-        replacedLine += "".join([n for s, n in NumberDict.items() if line[i:].startswith(s)])
-        replacedLine += line[i]
-        i += 1
-    return replacedLine
-
-def getFirstNumber(line):
-    return [i for i in line if i.isdigit()][0]
+NumberDict = {"one": "o1e", "two": "t2o", "three": "t3e", "four": "f4r", "five": "f5e", "six": "s6x", "seven": "s7n", "eight": "e8t", "nine": "n9e"}
 
 for line in lines:
-    sumA += int(getFirstNumber(line) + getFirstNumber(line[::-1]))
-    sumB += int(getFirstNumber(replaceStringWithNumber(line)) + getFirstNumber(replaceStringWithNumber(line)[::-1]))
+    sumA += int([i for i in line if i.isdigit()][0] + [i for i in line if i.isdigit()][-1])
+    for k, v in NumberDict.items():
+        line = line.replace(k, v)
+    sumB += int([i for i in line if i.isdigit()][0] + [i for i in line if i.isdigit()][-1])
 
 print(f"Answer A: {sumA}")
 print(f"Answer B: {sumB}")
