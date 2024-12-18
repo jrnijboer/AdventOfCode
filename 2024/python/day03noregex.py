@@ -1,4 +1,4 @@
-memory = open("../input/03.txt").read()
+memory = open("../input/03.txt", encoding="utf-8").read()
 A, B, mul = 0, 0, 1
 
 for i in range(len(memory)):

@@ -1,5 +1,5 @@
 import re
-memory = open("../input/03.txt").read()
+memory = open("../input/03.txt", encoding="utf-8").read()
 pattern = r"mul\((\d{1,3}),(\d{1,3})\)"
 print("Answer A:", sum(int(match[0]) * int(match[1]) for match in re.findall(pattern, memory)))
 
