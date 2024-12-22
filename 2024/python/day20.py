@@ -1,4 +1,3 @@
-from collections import defaultdict
 grid = [list(line) for line in open("../input/20.txt", encoding="utf-8").read().split("\n")]
 visited, sx,sy = set(), 0, 0
 for y, line in enumerate(grid):
