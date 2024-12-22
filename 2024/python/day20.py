@@ -1,22 +1,18 @@
 from collections import defaultdict
 grid = [list(line) for line in open("../input/20.txt", encoding="utf-8").read().split("\n")]
-walls, visited, S, E = set(), set(), (),()
-for Y, line in enumerate(grid):
-    for X, char in enumerate(line):
+visited, sx,sy = set(), 0, 0
+for y, line in enumerate(grid):
+    for x, char in enumerate(line):
         if char == "S":
-            S = (X, Y)
-        if char == "E":
-            E = (X, Y)
-        if char == "#":
-            walls.add((X, Y))
+            sx, sy = x, y
 
-fair_path = [S]
-while S != E:
+fair_path = [(sx, sy)]
+while grid[sy][sx] != "E":
     for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
-        if (S[0] + dx, S[1] + dy) not in walls and (S[0] + dx, S[1] + dy) not in visited:
-            visited.add((S[0] + dx, S[1] + dy))
-            fair_path.append((S[0] + dx, S[1] + dy))
-            S = (S[0] + dx, S[1] + dy)
+        if grid[sy + dy][sx + dx] != "#" and (sx + dx, sy + dy) not in visited:
+            visited.add((sx + dx, sy + dy))
+            fair_path.append((sx + dx, sy + dy))
+            sx, sy = sx + dx, sy + dy
             break
 
 fair_places = set(fair_path)
